@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Reved Bot
 // @namespace    https://github.com/NoNamePro0/Bot
-// @version      18
+// @version      1
 // @description  /r/place bot
 // @author       NoahvdAa, reckter, SgtChrome, nama17, Kronox
 // @match        https://www.reddit.com/r/place/*
