@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Reved Bot
 // @namespace    https://github.com/NoNamePro0/Bot
-// @version      1
+// @version      18
 // @description  /r/place bot
 // @author       NoahvdAa, reckter, SgtChrome, nama17, Kronox
 // @match        https://www.reddit.com/r/place/*
@@ -138,9 +138,26 @@ function updateOrders() {
 			}).showToast();
 		}
 
+<<<<<<< HEAD
 		setTimeout(() => initServerConnection(), 10*1000);
 	};
 	ccConnection.onmessage  = processOperation;
+=======
+		if (data?.version !== VERSION && !UPDATE_PENDING) {
+			UPDATE_PENDING = true
+			Toastify({
+				text: `NEUE VERSION VERFÜGBAR! Aktualisiere hier https://github.com/NoNamePro0/Bot/raw/main/placedebot.user.js`,
+				duration: -1,
+				onClick: () => {
+					// Tapermonkey captures this and opens a new tab
+					window.location = 'https://github.com/NoNamePro0/Bot/raw/main/placedebot.user.js'
+				}
+			}).showToast();
+
+		}
+		placeOrders = data;
+	}).catch((e) => console.warn('Bestellungen können nicht geladen werden!', e));
+>>>>>>> 72f04a6 (Update placedebot.user.js)
 }
 
 function processOperation(message) {
