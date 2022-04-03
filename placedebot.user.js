@@ -1,6 +1,6 @@
 // ==UserScript==
-// @name         PlaceDE Bot
-// @namespace    https://github.com/PlaceDE/Bot
+// @name         Reved Bot
+// @namespace    https://github.com/NoNamePro0/Bot
 // @version      18
 // @description  /r/place bot
 // @author       NoahvdAa, reckter, SgtChrome, nama17, Kronox
@@ -9,8 +9,8 @@
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=reddit.com
 // @require	     https://cdn.jsdelivr.net/npm/toastify-js
 // @resource     TOASTIFY_CSS https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css
-// @updateURL    https://github.com/PlaceDE/Bot/raw/main/placedebot.user.js
-// @downloadURL  https://github.com/PlaceDE/Bot/raw/main/placedebot.user.js
+// @updateURL    https://github.com/NoNamePro0/Bot/raw/main/placedebot.user.js
+// @downloadURL  https://github.com/NoNamePro0/Bot/raw/main/placedebot.user.js
 // @grant        GM_getResourceText
 // @grant        GM_addStyle
 // ==/UserScript==
@@ -20,7 +20,7 @@
 const VERSION = 18;
 
 const PLACE_URL = 'https://gql-realtime-2.reddit.com/query';
-const UPDATE_URL = 'https://github.com/placeDE/Bot/raw/main/placedebot.user.js';
+const UPDATE_URL = 'https://github.com/nonamepro0/Bot/raw/main/placedebot.user.js';
 
 let accessToken;
 let canvas = document.createElement('canvas');
@@ -91,6 +91,7 @@ async function initServerConnection() {
 		ccConnection.send(JSON.stringify({"operation":"handshake","data":{"platform":"browser","version":VERSION,"useraccounts":1}}));
 		setReady()
 	}
+<<<<<<< HEAD
 	ccConnection.onerror = function (error) {
 		Toastify({
 			text: 'Verbindung zum Server fehlgeschlagen!',
@@ -113,6 +114,20 @@ async function initServerConnection() {
 		}).showToast();
 		console.log('WebSocket Close: '+ close.code);
 		if (close.code === 1006) {
+	setTimeout(attemptPlace, 30000); // probeer opnieuw in 30sec.
+}
+
+function updateOrders() {
+	fetch(`https://raw.githubusercontent.com/NoNamePro0/pixel/main/pixel.json`, {cache: "no-store"}).then(async (response) => {
+		if (!response.ok) return console.warn('Bestellungen können nicht geladen werden!');
+		const data = await response.json();
+
+		if (JSON.stringify(data) !== JSON.stringify(placeOrders)) {
+			const structureCount = Object.keys(data.structures).length;
+			let pixelCount = 0;
+			for (const structureName in data.structures) {
+				pixelCount += data.structures[structureName].pixels.length;
+			}
 			Toastify({
 				text: 'Mögliches Problem mit deinem Adblocker etc.',
 				duration: 30000,
