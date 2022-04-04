@@ -2,6 +2,8 @@
 Fork von PlaceDE von PlaceNL Bot. Thanks guys!  
 Der Bot für Reved und Niekbeats! Dieser Bot holt automatisch alle paar Minuten [Pläne](https://github.com/NoNamePro0/pixel), um zu verhindern, dass Bots miteinander kollidieren.
 
+> AKTUELL KAPPUTT. WIRD GEFIXT. (hoffentlich)
+
 ## Installationsanweisungen
 
 Überprüfe, dass gerade neue Pixel plaziert werden können und dies nicht auf Cooldown ist
